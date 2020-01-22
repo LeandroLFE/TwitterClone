@@ -55,7 +55,7 @@
 				<br>
 				<?=$_SESSION['usuario']??null?>
 				<br>
-				<?=$_SESSION['senha']??null?>
+				<?=$_SESSION['email']??null?>
 				<br>
 			</div>
 			<div class="col-md-4"></div>
