@@ -1,5 +1,7 @@
 <?php
 
+    session_start();
+
     require_once('db.php');
 
     $usuario = $_POST['usuario']??null;
@@ -18,7 +20,11 @@
         if(isset($respAssoc['usuario'])
         && isset($respAssoc['senha']) 
         && password_verify($senha, $respAssoc['senha'])){
-            echo "usuario validado";
+
+            $_SESSION['usuario'] = $respAssoc['usuario'];
+            $_SESSION['senha'] = $respAssoc['senha'];
+            header('Location: Home.php');
+            
         } else{
             header("Location: index.php?erro=1");
         }  
