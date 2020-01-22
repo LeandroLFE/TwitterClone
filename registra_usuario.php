@@ -1,6 +1,6 @@
 <?php
 
-    require('db.php');
+    require_once('db.php');
 
     $usuario = $_POST['usuario']??null;
 
