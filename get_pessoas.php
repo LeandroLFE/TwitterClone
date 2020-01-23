@@ -5,6 +5,9 @@
     $idUsuario = $_SESSION['id']??null;
     $nome_pessoa =  $_POST['nome_pessoa']??null;
 
+    $nome_pessoa = filter_var($nome_pessoa, FILTER_SANITIZE_SPECIAL_CHARS);
+    $nome_pessoa = filter_var($nome_pessoa, FILTER_SANITIZE_STRING);
+
     if(empty($idUsuario)){
         header('Location: index.php?erro=1');
         exit("Dados inválidos");
