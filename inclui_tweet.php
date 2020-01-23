@@ -1,6 +1,6 @@
 <?php
-    require_once('db.php');
     session_start();
+    require_once('db.php');
 
     $texto_tweet = $_POST['texto_tweet']??null;
     $idUsuario = $_SESSION['id']??null;
@@ -16,5 +16,5 @@
     $sql = "INSERT INTO tweet(id_usuario, tweet) VALUES($idUsuario , '$texto_tweet')";
 
     if(!mysqli_query($link, $sql)){
-        exit("Deu ruim");
+        exit("Falha na inclusão de dados");
     }

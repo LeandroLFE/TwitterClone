@@ -39,7 +39,7 @@
 							data: $("#form_tweet").serialize(),
 							success: function(data){
 								$('#texto_tweet').val('');
-								alert("Tweet incluido com sucesso!");
+								atualizaTweet();
 							}
 						});
 
@@ -47,6 +47,19 @@
 						return false;
 					}
 				});
+
+				function atualizaTweet(){
+					// carrega os tweets
+					$.ajax({
+						url: 'get_tweets.php',
+						success: function(data){
+							$('#tweets').html(data);
+						}
+					});
+				}
+
+				atualizaTweet();
+
 			});
 		</script>
 	</head>
@@ -103,7 +116,10 @@
 							</span>
 						</form>
 					</div>
-			 	</div>
+				 </div>
+				 
+				<div id="tweets" class="list-group"></div>
+
 			</div>
 
 			<div class="col-md-4">
