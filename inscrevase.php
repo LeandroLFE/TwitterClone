@@ -1,3 +1,7 @@
+<?php
+	$erro_usuario = $_GET['erro_usuario']??false;
+	$erro_email = $_GET['erro_email']??false;
+?>
 <!DOCTYPE HTML>
 <html lang="pt-br">
 	<head>
@@ -47,15 +51,17 @@
 	    		<br />
 				<form method="post" action="registra_usuario.php" id="formCadastrarse">
 					<div class="form-group">
-						<input type="text" class="form-control" id="usuario" name="usuario" placeholder="Usuário" required="requiored">
+						<input type="text" class="form-control" id="usuario" name="usuario" placeholder="Usuário" required="required">
+						<?=$erro_usuario?'<font style="color:red"> Usuário já existe</font>':''?>
 					</div>
 
 					<div class="form-group">
-						<input type="email" class="form-control" id="email" name="email" placeholder="Email" required="requiored">
+						<input type="email" class="form-control" id="email" name="email" placeholder="Email" required="required">
+						<?=$erro_email?'<font style="color:red"> E-mail já existe</font>':''?>
 					</div>
 					
 					<div class="form-group">
-						<input type="password" class="form-control" id="senha" name="senha" placeholder="Senha" required="requiored">
+						<input type="password" class="form-control" id="senha" name="senha" placeholder="Senha" required="required">
 					</div>
 					
 					<button type="submit" class="btn btn-primary form-control">Inscreva-se</button>
