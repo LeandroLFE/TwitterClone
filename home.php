@@ -14,11 +14,31 @@
 		<title>Twitter clone</title>
 		
 		<!-- jquery - link cdn -->
-		<script src="https://code.jquery.com/jquery-2.2.4.min.js"></script>
+		<!-- <script src="https://code.jquery.com/jquery-2.2.4.min.js"></script> -->
+
+		 
+		<script src="https://code.jquery.com/jquery-3.4.1.min.js" 
+		integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
+		crossorigin="anonymous"></script>
+		
 
 		<!-- bootstrap - link cdn -->
 		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
-	
+
+		<script type="text/javascript">
+			$(document).ready( function(){
+
+				// Associar o evento de click ao Botão
+				$('#btn_tweet').click( function(){
+				
+					if($('#texto_tweet').val().length > 0){
+						
+					} else{
+						return false;
+					}
+				});
+			});
+		</script>
 	</head>
 
 	<body>
@@ -46,32 +66,47 @@
 
 
 	    <div class="container">
-	    	
-	    	<br /><br />
+	
 
-	    	<div class="col-md-4"></div>
-	    	<div class="col-md-4">
-			 	Usuário autenticado!!!
-				<br>
-				<?=$_SESSION['usuario']??null?>
-				<br>
-				<?=$_SESSION['email']??null?>
-				<br>
+	    	<div class="col-md-3">
+				<div class="panel panel-default">
+					<div class="panel-body">
+						<h4 style="text-align:center"><?=$_SESSION['usuario']??null?></h4>
+						<hr>
+						<div class="col-md-5">
+							TWEETS <br> 1
+						</div>
+						<div class="col-md-7">
+							SEGUIDORES <br> 1
+						</div>
+					</div>
+			 	</div>
 			</div>
-			<div class="col-md-4"></div>
+			
+	    	<div class="col-md-5">
+				<div class="panel panel-default">
+					<div class="panel-body">
+						<div class="input-group">
+							<input type="text" id="texto_tweet" class="form-control" placeholder="O que está acontecendo agora?" maxlength="140">
+							<span class="input-group-btn">
+								<button type="button" id="btn_tweet" class="btn btn-default">TWEET</button>
+							</span>
+						</div>
+					</div>
+			 	</div>
+			</div>
 
-			<div class="clearfix"></div>
-			<br />
-			<div class="col-md-4"></div>
-			<div class="col-md-4"></div>
-			<div class="col-md-4"></div>
-
+			<div class="col-md-4">
+				<div class="panel panel-default">
+					<div class="panel-body">
+						<h4><a href="#">Procurar por Pessoas</a></h4>
+					</div>
+			 	</div>
+			</div>
 		</div>
-
-
 	    </div>
 	
-		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 	
 	</body>
 </html>
