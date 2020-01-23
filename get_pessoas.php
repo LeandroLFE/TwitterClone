@@ -21,7 +21,7 @@
     $obJDb = new db();
     $link = $obJDb->conecta_mysql();
 
-    $sql = "SELECT u.usuario, u.email ";  
+    $sql = "SELECT u.id, u.usuario, u.email ";  
     $sql .= " FROM usuarios AS u"; 
     $sql .= " WHERE u.usuario like '%$nome_pessoa%'";
     $sql .= " AND u.id <> $idUsuario ";
@@ -36,5 +36,10 @@
     do{
         echo "<a href='#' class='list-group-item'>";
           echo "<strong>{$registro['usuario']}</strong> <small> - {$registro['email']} </small>";
+          echo '<p class="list-group-item-text pull-right">';
+            echo '<button type="button" class="btn btn-default btn_seguir" 
+            data-id_usuario="'.$registro['id'].'">Seguir</button>';
+          echo '</p>';
+          echo '<div class="clearfix"></div>';
         echo '</a>';
     }while($registro =  mysqli_fetch_assoc($resp));

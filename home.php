@@ -27,6 +27,13 @@
 
 		<script type="text/javascript">
 			$(document).ready( function(){
+				
+				$('#texto_tweet').keypress(function(e) {
+                    if ( e.keyCode == 13 ) {
+                        $('#btn_tweet').click();
+                        return false;
+                    }
+                });
 
 				// Associar o evento de click ao Botão
 				$('#btn_tweet').click( function(){

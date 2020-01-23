@@ -28,6 +28,13 @@
 		<script type="text/javascript">
 			$(document).ready( function(){
 
+                $('#nome_pessoa').keypress(function(e) {
+                    if ( e.keyCode == 13 ) {
+                        $('#btn_procurar_pessoa').click();
+                        return false;
+                    }
+                });
+
 				// Associar o evento de click ao Botão
 				$('#btn_procurar_pessoa').click( function(){
 				
@@ -38,7 +45,21 @@
 							method: 'post',
                             data: $("#form_procurar_pessoa").serialize(),
 							success: function(data){
-								$('#pessoas').html(data);							
+								$('#pessoas').html(data);
+
+                                $('.btn_seguir').click( function(){
+                                   var id_usuario = $(this).data('id_usuario');
+                                    $.ajax({
+                                        method: 'post',
+                                        url: 'seguir.php',
+                                        data: {
+                                            seguir_id_usuario:id_usuario
+                                        },
+                                        success: function(data){
+                                            alert('Registro efetuado com sucesso');
+                                        },
+                                    });
+                                });	
                             }
 						});
 
@@ -46,8 +67,6 @@
 						return false;
 					}
 				});
-
-
 			});
 		</script>
 	</head>
