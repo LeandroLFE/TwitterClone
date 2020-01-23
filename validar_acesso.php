@@ -21,9 +21,11 @@
         && isset($respAssoc['senha']) 
         && password_verify($senha, $respAssoc['senha'])){
 
+            $_SESSION['id'] = $respAssoc['id'];
             $_SESSION['usuario'] = $respAssoc['usuario'];
             $_SESSION['email'] = $respAssoc['email'];
             header('Location: Home.php');
+            
         } else{
             header("Location: index.php?erro=1");
         }  
