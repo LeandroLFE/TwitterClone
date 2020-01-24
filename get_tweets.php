@@ -16,7 +16,12 @@
     $sql .= " FROM tweet AS t"; 
     $sql .= " INNER JOIN usuarios as u";
     $sql .= " ON (t.id_usuario = u.id)";
-    $sql .= " WHERE t.id_usuario = $idUsuario ORDER BY t.data_inclusao DESC";
+    $sql .= " WHERE t.id_usuario = $idUsuario";
+    $sql .= " OR t.id_usuario IN ";
+        $sql .= " (SELECT seguindo_id_usuario";
+        $sql .= " FROM usuarios_seguidores"; 
+        $sql .= " WHERE id_usuario = $idUsuario)";
+    $sql .= " ORDER BY t.data_inclusao DESC";
 
     $resp = mysqli_query($link, $sql);
 
