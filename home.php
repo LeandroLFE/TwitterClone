@@ -1,3 +1,11 @@
+<?php
+session_start();
+
+if(empty($_SESSION['id']) || !isset($_SESSION['id'])){
+	header('Location: index.php?erro=1');
+	exit('');
+}
+?>
 <!DOCTYPE HTML>
 <html lang="pt-br">
 	<head>
@@ -17,8 +25,9 @@
 		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
 
 		<script type="text/javascript">
-			$(document).ready( function(){
-				
+
+			$(document).ready( function(){ 
+
 				$('#texto_tweet').keypress(function(e) {
                     if ( e.keyCode == 13 ) {
                         $('#btn_tweet').click();
@@ -38,13 +47,12 @@
 							success: function(data){
 								$('#texto_tweet').val('');
 								atualizaTweet();
-							}
-						});
-
-					} else{
+							} 
+						});  
+					} else{	
 						return false;
-					}
-				});
+					} 
+				}); 
 
 				function atualizaTweet(){
 					// carrega os tweets
@@ -52,6 +60,20 @@
 						url: 'get_tweets.php',
 						success: function(data){
 							$('#tweets').html(data);
+
+							$('.exclui_tweet').click( function(){
+								var id_tweet = $(this).data('tweet');
+								$.ajax({
+									url: 'exclui_tweets.php',
+									method: 'post',
+									data:{
+										id_tweet_a_excluir : id_tweet
+									},
+									success: function(data){
+										atualizaTweet();	
+									}
+								});
+							});
 							atualizaPainel();
 						}
 					});
@@ -70,6 +92,7 @@
 				atualizaTweet();
 
 			});
+
 		</script>
 	</head>
 
