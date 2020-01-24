@@ -1,11 +1,11 @@
-<?php	
-	session_start();
+<!-- <?php	
+	// session_start();
 
-	if(empty($_SESSION['usuario'])){
-		header('Location: index.php?erro=1');
-	}
+	// if(empty($_SESSION['usuario'])){
+	// 	header('Location: index.php?erro=1');
+	// }
 
-?>
+?> -->
 <!DOCTYPE HTML>
 <html lang="pt-br">
 	<head>
@@ -60,7 +60,7 @@
                                             seguir_id_usuario:id_usuario
                                         },
                                         success: function(data){
-                                            
+                                            atualizaPainel();
                                         },
                                     });
                                 });	
@@ -78,10 +78,12 @@
                                             deixar_seguir_id_usuario:id_usuario
                                         },
                                         success: function(data){
-                                            
+                                            atualizaPainel();
                                         },
                                     });
                                 });	
+
+								atualizaPainel();
                             }
 						});
 
@@ -89,6 +91,18 @@
 						return false;
 					}
 				});
+
+				function atualizaPainel(){
+					
+					$.ajax({
+						url: 'atualiza_painel.php',
+						success: function(data){
+							$('#painel').html(data);
+						}
+					});
+				}
+				
+				atualizaPainel();
 			});
 		</script>
 	</head>
@@ -123,16 +137,7 @@
 
 	    	<div class="col-md-3">
 				<div class="panel panel-default">
-					<div class="panel-body">
-						<h4 style="text-align:center"><?=$_SESSION['usuario']??null?></h4>
-						<hr>
-						<div class="col-md-5">
-							TWEETS <br> 1
-						</div>
-						<div class="col-md-7">
-							SEGUIDORES <br> 1
-						</div>
-					</div>
+					<div class="panel-body" id="painel"></div>
 			 	</div>
 			</div>
 			

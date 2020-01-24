@@ -28,7 +28,7 @@
     if(!$resp){
         exit("Falha na consulta ao Banco de Dados");
     }
-
+    
     while($registro =  mysqli_fetch_assoc($resp)){
         echo "<a href='#' class='list-group-item'>";
             echo "<h4 class='list-group-item-heading'>{$registro['usuario']} <small> - {$registro['data_inclusao']} </small></h4>";
