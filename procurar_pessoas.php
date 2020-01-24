@@ -60,7 +60,7 @@
                                             seguir_id_usuario:id_usuario
                                         },
                                         success: function(data){
-                                            alert('Registro efetuado com sucesso');
+                                            
                                         },
                                     });
                                 });	
@@ -78,7 +78,7 @@
                                             deixar_seguir_id_usuario:id_usuario
                                         },
                                         success: function(data){
-                                            alert('Registro excluído com sucesso');
+                                            
                                         },
                                     });
                                 });	
